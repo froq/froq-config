@@ -1,0 +1,17 @@
+{
+    "name": "froq/froq-config",
+    "homepage": "https://github.com/froq/froq-config",
+    "description": "Config module for Froq!",
+    "keywords": ["froq", "config"],
+    "license": "GNU General Public License v3.0",
+    "authors": [
+        {"name": "Kerem Güneş", "email": "k-gun@mail.com"}
+    ],
+    "require": {
+        "php": "^7.0",
+        "froq/froq-collection": "~1.0"
+    },
+    "autoload": {
+        "classmap": ["src/"]
+    }
+}
