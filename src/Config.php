@@ -60,7 +60,7 @@ final class Config extends Collection
      * @param  any    $value
      * @return self
      */
-    final public function set(string $key, $value): self
+    final public function set($key, $value): self
     {
         $this->data[$key] = $value;
 
