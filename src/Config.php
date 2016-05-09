@@ -35,27 +35,27 @@ final class Config extends Collection
 {
     /**
      * Constructor.
-     *
-     * @param array|string $data String if addressed to a config file.
+     * @param array|string|null $data String if addressed to a config file.
      */
-    final public function __construct($data)
+    final public function __construct($data = null)
     {
-        if (is_string($data)) {
-            $data = require($data);
-        }
+        if (!empty($data)) {
+            if (is_string($data)) {
+                $data = require($data);
+            }
 
-        // every config file must return array
-        if (!is_array($data)) {
-            throw new ConfigException(
-                'Config data must be array or path to array file!');
-        }
+            // every config file must return array
+            if (!is_array($data)) {
+                throw new ConfigException(
+                    'Config data must be array or path to array file!');
+            }
 
-        $this->setData($data);
+            $this->setData($data);
+        }
     }
 
     /**
      * Setter.
-     *
      * @param  string $key
      * @param  any    $value
      * @return self
@@ -69,7 +69,6 @@ final class Config extends Collection
 
     /**
      * Getter.
-     *
      * @param  string $key
      * @param  any    $valueDefault
      * @return any
@@ -81,7 +80,6 @@ final class Config extends Collection
 
     /**
      * Merge.
-     *
      * @param  array $source
      * @param  array $target
      * @return array
