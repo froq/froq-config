@@ -34,70 +34,21 @@ use Froq\Collection\Collection;
 final class Config extends Collection
 {
     /**
-     * Constructor.
-     * @param array|string|null $data String if addressed to a config file.
-     */
-    final public function __construct($data = null)
-    {
-        if (!empty($data)) {
-            if (is_string($data)) {
-                $data = require($data);
-            }
-
-            // every config file must return array
-            if (!is_array($data)) {
-                throw new ConfigException(
-                    'Config data must be array or path to array file!');
-            }
-
-            $this->setData($data);
-        }
-    }
-
-    /**
-     * Setter.
-     * @param  string $key
-     * @param  any    $value
-     * @return self
-     */
-    final public function set($key, $value): self
-    {
-        $this->data[$key] = $value;
-
-        return $this;
-    }
-
-    /**
-     * Getter.
-     * @param  string $key
-     * @param  any    $valueDefault
-     * @return any
-     */
-    final public function get($key, $valueDefault = null)
-    {
-        return $this->dig($key, $valueDefault);
-    }
-
-    /**
      * Merge.
-     * @param  array $source
-     * @param  array $target
+     * @param  array $source1
+     * @param  array $source2
      * @return array
      */
-    final public static function merge(array $source, array $target): array
+    final public static function merge(array $source1, array $source2): array
     {
-        if (empty($source)) {
-            return $source;
-        }
-
-        foreach ($source as $key => $value) {
-            if (is_array($value) && isset($target[$key]) && is_array($target[$key])) {
-                $target[$key] = self::merge($target[$key], $value);
-            } else {
-                $target[$key] = $value;
+        $return = [];
+        foreach ($source1 as $key => $value) {
+            if ($value && is_array($value) && isset($source2[$key]) && is_array($source2[$key])) {
+                $value = array_merge($source2[$key], $value);
             }
+            $return[$key] = $value;
         }
 
-        return $target;
+        return $return;
     }
 }
