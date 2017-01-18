@@ -41,7 +41,7 @@ final class Config extends Collection
      */
     final public static function merge(array $source1, array $source2): array
     {
-        $return = [];
+        $return = $source2;
         foreach ($source1 as $key => $value) {
             if ($value && is_array($value) && isset($source2[$key]) && is_array($source2[$key])) {
                 $value = array_merge($source2[$key], $value);
