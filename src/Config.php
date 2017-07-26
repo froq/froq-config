@@ -39,7 +39,7 @@ final class Config extends Collection
      * @param  array $source2
      * @return array
      */
-    final public static function merge(array $source1, array $source2): array
+    public static final function merge(array $source1, array $source2): array
     {
         $return = $source2;
         foreach ($source1 as $key => $value) {
