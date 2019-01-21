@@ -29,10 +29,11 @@ namespace Froq\Config;
 use Froq\Collection\Collection;
 
 /**
- * @package     Froq
- * @subpackage  Froq\Config
- * @object      Froq\Config\Config
- * @author      Kerem Güneş <k-gun@mail.com>
+ * @package    Froq
+ * @subpackage Froq\Config
+ * @object     Froq\Config\Config
+ * @author     Kerem Güneş <k-gun@mail.com>
+ * @since      1.0
  */
 final class Config extends Collection
 {

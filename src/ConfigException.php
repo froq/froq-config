@@ -31,6 +31,7 @@ namespace Froq\Config;
  * @subpackage Froq\Config
  * @object     Froq\Config\ConfigException
  * @author     Kerem Güneş <k-gun@mail.com>
+ * @since      1.0
  */
 final class ConfigException extends \Exception
 {}
