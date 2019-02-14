@@ -24,14 +24,14 @@
  */
 declare(strict_types=1);
 
-namespace Froq\Config;
+namespace froq\config;
 
 /**
- * @package    Froq
- * @subpackage Froq\Config
- * @object     Froq\Config\ConfigException
- * @author     Kerem Güneş <k-gun@mail.com>
- * @since      1.0
+ * Config Exception.
+ * @package froq\config
+ * @object  froq\config\ConfigException
+ * @author  Kerem Güneş <k-gun@mail.com>
+ * @since   1.0
  */
 final class ConfigException extends \Exception
 {}

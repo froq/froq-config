@@ -24,16 +24,16 @@
  */
 declare(strict_types=1);
 
-namespace Froq\Config;
+namespace froq\config;
 
-use Froq\Collection\Collection;
+use froq\collection\Collection;
 
 /**
- * @package    Froq
- * @subpackage Froq\Config
- * @object     Froq\Config\Config
- * @author     Kerem Güneş <k-gun@mail.com>
- * @since      1.0
+ * Config.
+ * @package froq\config
+ * @object  froq\config\Config
+ * @author  Kerem Güneş <k-gun@mail.com>
+ * @since   1.0
  */
 final class Config extends Collection
 {
