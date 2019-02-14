@@ -27,7 +27,7 @@ declare(strict_types=1);
 namespace froq\config;
 
 /**
- * Config Exception.
+ * Config exception.
  * @package froq\config
  * @object  froq\config\ConfigException
  * @author  Kerem Güneş <k-gun@mail.com>
