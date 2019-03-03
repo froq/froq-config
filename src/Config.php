@@ -48,7 +48,7 @@ final class Config extends Collection
         $return = $source2;
         foreach ($source1 as $key => $value) {
             if ($value && is_array($value) && isset($source2[$key]) && is_array($source2[$key])) {
-                $value = array_merge($source2[$key], $value);
+                $value = array_merge_recursive($source2[$key], $value);
             }
             $return[$key] = $value;
         }
