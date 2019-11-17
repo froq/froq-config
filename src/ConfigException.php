@@ -26,12 +26,14 @@ declare(strict_types=1);
 
 namespace froq\config;
 
+use froq\Exception;
+
 /**
- * Config exception.
+ * Config Exception.
  * @package froq\config
  * @object  froq\config\ConfigException
  * @author  Kerem Güneş <k-gun@mail.com>
  * @since   1.0
  */
-final class ConfigException extends \Exception
+final class ConfigException extends Exception
 {}
