@@ -1,15 +1,16 @@
 {
     "name": "froq/froq-config",
     "homepage": "https://github.com/froq/froq-config",
-    "description": "Config module for Froq!",
+    "description": "Froq! Config.",
     "keywords": ["froq", "config"],
     "license": "MIT",
     "authors": [
         {"name": "Kerem Güneş", "email": "k-gun@mail.com"}
     ],
     "require": {
-        "php": "^7.2",
-        "froq/froq-collection": "^3.0"
+        "php": "^7.4",
+        "froq/froq-common": "^4.0",
+        "froq/froq-collection": "^4.0"
     },
     "autoload": {
         "classmap": ["src/"]

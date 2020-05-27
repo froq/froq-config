@@ -38,22 +38,44 @@ use froq\collection\Collection;
 final class Config extends Collection
 {
     /**
-     * Merge.
+     * Update.
+     * @param  array $source
+     * @return array
+     * @since  4.0
+     */
+    public function update(array $source): self
+    {
+        $data = self::mergeSources($source, $this->getData());
+
+        $this->setData($data);
+
+        return $this;
+    }
+
+    /**
+     * Merge sources.
      * @param  array $source1
      * @param  array $source2
      * @return array
+     * @since  1.0, 4.0 Renamed as mergeSources() from merge().
      */
-    public static function merge(array $source1, array $source2): array
+    public static function mergeSources(array $source1, array $source2): array
     {
-        $return = $source2;
+        $ret = $source2;
 
         foreach ($source1 as $key => $value) {
-            if ($value && is_array($value) && isset($source2[$key]) && is_array($source2[$key])) {
+            if (
+                $value
+                && is_array($value)
+                && isset($source2[$key])
+                && is_array($source2[$key])
+            ) {
                 $value = array_replace_recursive($source2[$key], $value);
             }
-            $return[$key] = $value;
+
+            $ret[$key] = $value;
         }
 
-        return $return;
+        return $ret;
     }
 }
