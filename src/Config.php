@@ -80,50 +80,5 @@ final class Config extends Collection
         return $ret;
     }
 
-    /**
-     * Parse dotenv.
-     * @param  string $file
-     * @return array
-     * @throws froq\config\ConfigException
-     * @since  4.1
-     */
-    public static function parseDotenv(string $file): array
-    {
-        $ret = [];
 
-        if (!is_file($file)) {
-            throw new ConfigException('No .env file exists such "%s"', $file);
-        }
-
-        $lines = file($file);
-        if ($lines === false) {
-            throw new ConfigException('Cannot read .env file "%s" [error: %s]',
-                [$file, error_get_last_message()]);
-        }
-
-        foreach ($lines as $i => $line) {
-            $line = trim($line);
-
-            // Skip empty & comment lines.
-            if (!$line || $line[0] === '#') {
-                continue;
-            }
-
-            $pairs = array_map('trim', explode('=', $line, 2));
-            if (count($pairs) != 2) {
-                throw new ConfigException('Invalid .env entry "%s" at file "%s:%s"',
-                    [$line, $file, $i + 1]);
-            }
-
-            [$name, $value] = $pairs;
-            if (isset($ret[$name])) {
-                throw new ConfigException('Duplicated .env entry "%s" at file "%s:%s"',
-                    [$name, $file, $i + 1]);
-            }
-
-            $ret[$name] = $value;
-        }
-
-        return $ret;
-    }
 }
