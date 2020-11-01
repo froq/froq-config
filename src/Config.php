@@ -98,7 +98,7 @@ final class Config extends Collection
         $lines = file($file);
         if ($lines === false) {
             throw new ConfigException('Cannot read .env file "%s" [error: %s]',
-                [$file, error_get_last_message()]);
+                [$file, error_get_last()['message'] ?? 'unknown']);
         }
 
         foreach ($lines as $i => $line) {
