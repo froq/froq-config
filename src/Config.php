@@ -76,13 +76,12 @@ final class Config extends Collection
         $ret = [];
 
         if (!is_file($file)) {
-            throw new ConfigException('No .env file exists such "%s"', $file);
+            throw new ConfigException("No .env file exists such '%s'", $file);
         }
 
         $lines = file($file);
         if ($lines === false) {
-            throw new ConfigException('Cannot read .env file "%s" [error: %s]',
-                [$file, error_get_last()['message'] ?? 'unknown']);
+            throw new ConfigException("Cannot read .env file '%s', [error: %s]", [$file, '@error']);
         }
 
         foreach ($lines as $i => $line) {
@@ -95,14 +94,12 @@ final class Config extends Collection
 
             $pairs = array_map('trim', explode('=', $line, 2));
             if (count($pairs) != 2) {
-                throw new ConfigException('Invalid .env entry "%s" at file "%s:%s"',
-                    [$line, $file, $i + 1]);
+                throw new ConfigException("Invalid .env entry '%s' at file '%s:%s'", [$line, $file, $i + 1]);
             }
 
             [$name, $value] = $pairs;
             if (isset($ret[$name])) {
-                throw new ConfigException('Duplicated .env entry "%s" at file "%s:%s"',
-                    [$name, $file, $i + 1]);
+                throw new ConfigException("Duplicated .env entry '%s' at file '%s:%s'", [$name, $file, $i + 1]);
             }
 
             $ret[$name] = $value;
