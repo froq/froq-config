@@ -23,32 +23,6 @@ use froq\collection\Collection;
 final class Config extends Collection
 {
     /**
-     * Set an option or options.
-     *
-     * @param  string|array $key
-     * @param  any|null     $value
-     * @return self
-     * @since  5.0
-     */
-    public function set(string|array $key, $value = null): self
-    {
-        return parent::set($key, $value);
-    }
-
-    /**
-     * Get an option or options.
-     *
-     * @param  string|array $key
-     * @param  any|null     $default
-     * @return any
-     * @since  5.0
-     */
-    public function get(string|array $key, $default = null)
-    {
-        return parent::get($key, $default);
-    }
-
-    /**
      * Update current options.
      *
      * @param  array $data
@@ -68,7 +42,7 @@ final class Config extends Collection
      * @param  array $source1
      * @param  array $source2
      * @return array
-     * @since  1.0, 4.0 Renamed as mergeSources() from merge().
+     * @since  1.0, 4.0 Derived from merge().
      */
     public static function mergeSources(array $source1, array $source2): array
     {
