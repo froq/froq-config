@@ -23,22 +23,48 @@ use froq\collection\Collection;
 final class Config extends Collection
 {
     /**
-     * Update.
-     * @param  array $source
-     * @return array
+     * Set an option or options.
+     *
+     * @param  string|array $key
+     * @param  any|null     $value
+     * @return self
+     * @since  5.0
+     */
+    public function set(string|array $key, $value = null): self
+    {
+        return parent::set($key, $value);
+    }
+
+    /**
+     * Get an option or options.
+     *
+     * @param  string|array $key
+     * @param  any|null     $default
+     * @return any
+     * @since  5.0
+     */
+    public function get(string|array $key, $default = null)
+    {
+        return parent::get($key, $default);
+    }
+
+    /**
+     * Update current options.
+     *
+     * @param  array $data
+     * @return self
      * @since  4.0
      */
-    public function update(array $source): self
+    public function update(array $data): self
     {
-        $data = self::mergeSources($source, $this->getData());
-
-        $this->setData($data);
+        $this->setData(self::mergeSources($data, $this->getData()));
 
         return $this;
     }
 
     /**
-     * Merge sources.
+     * Merge two config sources.
+     *
      * @param  array $source1
      * @param  array $source2
      * @return array
@@ -65,7 +91,8 @@ final class Config extends Collection
     }
 
     /**
-     * Parse dotenv.
+     * Parse a dot-env file and return its options as array.
+     *
      * @param  string $file
      * @return array
      * @throws froq\config\ConfigException
