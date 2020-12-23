@@ -1,16 +1,14 @@
 {
     "name": "froq/froq-config",
-    "homepage": "https://github.com/froq/froq-config",
+    "homepage": "http://github.com/froq/froq-config",
     "description": "Froq! Config.",
     "keywords": ["froq", "config"],
     "license": "Apache-2.0",
-    "authors": [
-        {"name": "Kerem Güneş", "email": "k-gun@mail.com"}
-    ],
+    "authors": [{"name": "Kerem Güneş"}],
     "require": {
-        "php": "^7.4",
-        "froq/froq-common": "^4.0",
-        "froq/froq-collection": "^4.0"
+        "php": "^8.0",
+        "froq/froq-common": "^5.0",
+        "froq/froq-collection": "^5.0"
     },
     "autoload": {
         "classmap": ["src/"]
